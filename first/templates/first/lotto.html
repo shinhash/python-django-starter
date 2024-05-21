@@ -1,0 +1,17 @@
+{% extends 'first/base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+        <p>
+            {% for lotto_num in lotto_numbers %}
+            {{ lotto_num }}
+                {% if forloop.last %}
+                {% else %}
+                    ,
+                {% endif %}
+            {% endfor %}
+        </p>
+        <p>{{ lotto_numbers|length }}</p>
+        <a href="{% url 'index' %}">go to index!!!</a>
+    </div>
+{% endblock %}

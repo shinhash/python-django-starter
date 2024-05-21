@@ -1,0 +1,12 @@
+{% extends 'first/base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+        <p>{{ message|capfirst }}</p>
+        <img src="{% static 'first/python-icon.png' %}" alt="python-icon" />
+        <p>{{ current_date }}</p>
+        <p>{{ current_date|date:"Y년 m월 d일 H시 i분 s초" }}</p>
+
+        <a href="{% url 'select' %}">go to select!!!</a>
+    </div>
+{% endblock %}

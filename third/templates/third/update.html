@@ -1,0 +1,45 @@
+{% extends 'third/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <form method="post" id="update_rest_form">
+        {% csrf_token %}
+<!--        action="{% url 'restaurant-update' restaurant_id=form.instance.id %}">-->
+<!--        <table>-->
+<!--            {{ form.as_table }}-->
+<!--        </table>-->
+        <div>
+            <label for="id_name">이름:</label>
+            <div class="helptext" id="id_name_helptext">이름을 입력해주세요.</div>
+            <input type="text" name="name" value="깃헙 테스트 이름입니다." maxlength="30" required aria-describedby="id_name_helptext" id="id_name"/>
+        </div>
+
+        <div>
+            <label for="id_address">주소:</label>
+            <div class="helptext" id="id_address_helptext">주소를 입력해주세요.</div>
+            <input type="text" name="address" value="https://github.com/" maxlength="200" required aria-describedby="id_address_helptext" id="id_address"/>
+        </div>
+
+        <div>
+            <label for="id_image">이미지:</label>
+            <div class="helptext" id="id_image_helptext">이미지 파일을 선택해주세요.</div>
+            <input type="file" name="image" accept="image/*" id="id_image"/>
+        </div>
+
+        <div>
+            <label for="id_password">게시글 비밀번호:</label>
+            <div class="helptext" id="id_password_helptext">게시글 비밀번호를 입력해주세요</div>
+            <input type="password" name="password" maxlength="20" required aria-describedby="id_password_helptext" id="id_password"/>
+        </div>
+        <div>
+            <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{ form.instance.id }}" />
+            <input type="hidden" id="update_rest_url" name="update_rest_url" value="{% url 'api-restaurant-update' %}" />
+            <input type="hidden" name="image_origin_name" value="깃헙아이콘.png" id="id_image_origin_name"/>
+            <input type="hidden" name="image_trance_name" value="20240520161927_9636073370e342bf8c7826847f820283.png" id="id_image_trance_name"/>
+            <input type="hidden" name="image_view_path" value="/media/images/20240520169636073370e342bf8c7826847f820283.png" id="id_image_view_path"/>
+        </div>
+<!--        <button type="submit">수정완료</button>-->
+        <input type="button" onclick="update_restaurant()" value="수정완료">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'third/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    {% for restaurant in restaurant_list %}
+    <div class="row restaurant-item" style="margin:20px auto;">
+        <div class="col-sm-12">
+            <div class="card border-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">{{ restaurant.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ restaurant.address }}</h6>
+                    <p class="card-text">
+                        {% if restaurant.image_view_path %}
+                            <img src="{{ restaurant.image_view_path }}" alt="{{ restaurant.image }}">
+                        {% endif %}
+                    </p>
+                    <p class="card-text">리뷰 : {{ restaurant.reviews_count }} 개</p>
+                    <p class="card-text">평점 : {{ restaurant.reviews_avg }} 점</p>
+                    <p class="card-text">음식점 설명</p>
+                    <a href="{% url 'restaurant-detail' restaurant_id=restaurant.id %}" class="card-link">자세히보기</a>
+                    <a href= "{% url 'restaurant-update' restaurant_id=restaurant.id %}" class="card-link">수정하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <div class="pagination">
+                <span class="step-links text-center" style="width:100%;">
+                    {% if restaurant_list.has_previous %}
+                        <a href="{% url 'restaurant-list' page_num=1 %}">&laquo;</a>
+                        <a href="{% url 'restaurant-list' page_num=restaurant_list.previous_page_number %}">{{ restaurant_list.previous_page_number }}</a>
+                    {% endif %}
+                    <span class="current">
+                        {{ restaurant_list.number }}
+                    </span>
+                    {% if restaurant_list.has_next %}
+                        <a href="{% url 'restaurant-list' page_num=restaurant_list.next_page_number %}">{{ restaurant_list.next_page_number }}</a>
+                        <a href="{% url 'restaurant-list' page_num=restaurant_list.paginator.num_pages %}">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

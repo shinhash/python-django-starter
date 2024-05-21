@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>second</title>
+</head>
+<body>
+    <div>
+        {% for item in items %}
+        <div id="{{ item.id }}">
+            <h4>
+                {{ item.title }}
+            </h4>
+            <p>
+                {{ item.content }}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'first/base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+        <p>{{ message }}</p>
+        <p>{{ number }}</p>
+        <p>
+            {% if number|divisibleby:2 %}
+                짝수
+            {% else %}
+                홀수
+            {% endif %}
+        </p>
+        <ul>
+            {% for num in numbers %}
+            <li>{{ num }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'result' %}">go to result!!!</a>
+        <a href="{% url 'lotto' %}">go to Lotto!!!</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'first/base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+        <p>{{ message }}</p>
+        <p>{{ number }}</p>
+
+        <a href="{% url 'index' %}">go to index!!!</a>
+    </div>
+{% endblock %}
