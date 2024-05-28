@@ -24,6 +24,8 @@ urlpatterns = [
     path('first/', include('first.urls')),
     path('second/', include('second.urls')),
     path('third/', include('third.urls')),
+    path('mariaDBProject/', include('mariaDBProject.urls')),
+    path('blog/', include('blog.urls')),
 ]
 
 if settings.DEBUG:
